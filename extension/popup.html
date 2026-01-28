@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab Grouper</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Tab Grouper</h1>
+
+    <button id="groupBtn" class="primary-btn">
+      Re-sort Tabs Now
+    </button>
+
+    <p class="auto-note">Tabs are automatically grouped by domain when opened or navigated.</p>
+
+    <div id="result" class="result hidden"></div>
+
+    <div class="info">
+      <h2>Settings</h2>
+      <p class="description">
+        Duplicate tabs (same URL) are automatically closed and switched to the existing tab.
+      </p>
+    </div>
+
+    <div id="status" class="status hidden"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
