@@ -2,7 +2,7 @@
 
 A Safari Web Extension that groups tabs by domain and limits duplicate tabs.
 
-[![Screen shot of a bluesky post from Amy Hoy asking for someone to create this extension](https://gist.github.com/user-attachments/assets/81717309-adc2-47ad-8801-fe0e8708e791)](https://bsky.app/profile/amyhoy.bsky.social/post/3mdj6azcshk27)
+> ["i need a safari extension that will group tabs from the same domain together and stop me from opening 3 duplicate tabs ……………… anyone??"](https://bsky.app/profile/amyhoy.bsky.social/post/3mdj6azcshk27)
 
 I don't have an Apple Developer account and I'm not going to pay for it to publish an extension I don't use, but I mean, here's the code. If anyone wants to compile it and publish it, you have my blessing.
 
