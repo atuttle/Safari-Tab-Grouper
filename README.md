@@ -14,6 +14,7 @@ This project is dedicated to the public domain under [CC0 1.0](https://creativec
 
 - **Auto-grouping**: Tabs sorted by domain on open/navigate
 - **Duplicate blocking**: Closes dupes, switches to existing tab
+- **Configurable matching**: Exact URL or ignore query parameters (Settings)
 
 ## Installation
 
@@ -60,4 +61,4 @@ Safari > Settings > Extensions > enable "Tab Grouper" > "Allow for Every Website
 
 **Tabs not grouping?** Grant all-websites permission. Special Safari pages can't move.
 
-**Duplicates not blocked?** Exact URL match only.
+**Duplicates not blocked?** Check Settings — default is exact URL match; enable "Ignore query parameters" to match by path only.
