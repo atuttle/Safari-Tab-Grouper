@@ -2,6 +2,7 @@
 // Groups tabs by domain and limits duplicates to 3
 
 const MAX_DUPLICATES = 1;
+const DEFAULT_MATCH_MODE = 'exact';
 
 /**
  * Extract domain from URL
@@ -15,10 +16,37 @@ function getDomain(url) {
 }
 
 /**
- * Get all tabs with matching exact URL
+ * Get URL without query parameters (origin + pathname only)
+ */
+function getUrlWithoutParams(url) {
+  try {
+    const u = new URL(url);
+    return u.origin + u.pathname;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Get current match mode setting
+ */
+async function getMatchMode() {
+  const data = await browser.storage.local.get('matchMode');
+  return data.matchMode || DEFAULT_MATCH_MODE;
+}
+
+/**
+ * Get all tabs with matching URL (respects match mode setting)
  */
 async function getTabsWithUrl(url, windowId) {
   const tabs = await browser.tabs.query({ windowId });
+  const matchMode = await getMatchMode();
+
+  if (matchMode === 'ignoreParams') {
+    const targetUrl = getUrlWithoutParams(url);
+    return tabs.filter(tab => getUrlWithoutParams(tab.url) === targetUrl);
+  }
+
   return tabs.filter(tab => tab.url === url);
 }
 

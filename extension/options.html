@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab Grouper Settings</title>
+  <link rel="stylesheet" href="popup.css">
+  <style>
+    body {
+      min-width: auto;
+      max-width: 480px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px;
+      margin-bottom: 8px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .option:hover {
+      border-color: #007aff;
+    }
+
+    .option.selected {
+      border-color: #007aff;
+      background: rgba(0, 122, 255, 0.05);
+    }
+
+    .option input[type="radio"] {
+      margin-top: 2px;
+      accent-color: #007aff;
+    }
+
+    .option-content {
+      flex: 1;
+    }
+
+    .option-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .option-description {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    .option-example {
+      font-size: 11px;
+      color: #888;
+      margin-top: 6px;
+      font-family: monospace;
+      background: #f5f5f5;
+      padding: 6px 8px;
+      border-radius: 4px;
+    }
+
+    .saved-message {
+      margin-top: 16px;
+      padding: 10px 12px;
+      background: #e8f5e9;
+      color: #2e7d32;
+      border-radius: 6px;
+      font-size: 13px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .saved-message.show {
+      opacity: 1;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .option {
+        border-color: #38383a;
+      }
+
+      .option:hover {
+        border-color: #0a84ff;
+      }
+
+      .option.selected {
+        border-color: #0a84ff;
+        background: rgba(10, 132, 255, 0.1);
+      }
+
+      .option-description {
+        color: #98989f;
+      }
+
+      .option-example {
+        background: #2c2c2e;
+        color: #98989f;
+      }
+
+      .saved-message {
+        background: #1b3a1b;
+        color: #4caf50;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Tab Grouper Settings</h1>
+
+    <h2>Duplicate Detection</h2>
+
+    <label class="option" data-value="exact">
+      <input type="radio" name="matchMode" value="exact">
+      <div class="option-content">
+        <div class="option-title">Exact URL match</div>
+        <div class="option-description">
+          Only considers tabs as duplicates if the entire URL matches, including query parameters.
+        </div>
+        <div class="option-example">
+          example.com/page?id=1 ≠ example.com/page?id=2
+        </div>
+      </div>
+    </label>
+
+    <label class="option" data-value="ignoreParams">
+      <input type="radio" name="matchMode" value="ignoreParams">
+      <div class="option-content">
+        <div class="option-title">Ignore query parameters</div>
+        <div class="option-description">
+          Considers tabs as duplicates if the domain and path match, ignoring query parameters.
+        </div>
+        <div class="option-example">
+          example.com/page?id=1 = example.com/page?id=2
+        </div>
+      </div>
+    </label>
+
+    <div class="saved-message" id="savedMessage">Settings saved</div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
